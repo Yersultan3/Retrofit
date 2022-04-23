@@ -1,14 +1,19 @@
-package com.example.retrofit.model
+package com.example.retrofit.model.api
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity(tableName = "movie_table")
 data class Movie(
+    @PrimaryKey
+    val id: Int,
     val adult: Boolean,
     val backdrop_path: String,
-    val genre_ids: List<Int>,
-    val  id: Int,
+    val genre_ids: List<Int>?,
     val original_language: String,
     val original_title: String,
     val overview: String,

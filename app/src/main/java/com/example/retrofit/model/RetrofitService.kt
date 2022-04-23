@@ -1,6 +1,7 @@
 package com.example.retrofit.model
 
 import android.util.Log
+import com.example.retrofit.model.api.MovieApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.retrofit.model.Movie
+import com.example.retrofit.model.api.Movie
 import com.example.retrofit.R
 import com.example.retrofit.databinding.MovieItemBinding
 import com.squareup.picasso.Picasso

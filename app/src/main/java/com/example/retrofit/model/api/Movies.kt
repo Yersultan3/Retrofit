@@ -1,6 +1,6 @@
-package com.example.retrofit.model
+package com.example.retrofit.model.api
 
-import com.example.retrofit.model.Movie
+import com.example.retrofit.model.api.Movie
 
 data class Movies(
     val page: Int,

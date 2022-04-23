@@ -1,5 +1,7 @@
-package com.example.retrofit.model
+package com.example.retrofit.model.api
 
+import com.example.retrofit.model.CreateToken
+import com.example.retrofit.model.ValidateWithLogin
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response

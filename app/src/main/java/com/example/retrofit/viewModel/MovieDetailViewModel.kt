@@ -3,9 +3,8 @@ package com.example.retrofit.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.retrofit.model.Movie
+import com.example.retrofit.model.api.Movie
 import com.example.retrofit.model.RetrofitService
-import com.example.retrofit.view.fragments.FirstFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

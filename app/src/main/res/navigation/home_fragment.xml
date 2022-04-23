@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_home_fragment">
+
+<!--    <fragment-->
+<!--        android:id="@+id/homeFragment"-->
+<!--        android:name="com.example.retrofit.view.fragments.HomeFragment"-->
+<!--        tools:layout="@layout/fragment_home">-->
+<!--        <action-->
+<!--            android:id="@+id/action_homeFragment_to_detailFragment"-->
+<!--            app:destination="@id/detailFragment"-->
+<!--            app:popUpToInclusive="true"/>-->
+
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/detailFragment2"-->
+<!--        android:name="com.example.retrofit.view.fragments.DetailFragment"-->
+<!--        android:label="fragment_detail"-->
+<!--        tools:layout="@layout/fragment_detail" />-->
+
+<!--        <fragment-->
+<!--        android:id="@+id/detailFragment"-->
+<!--        android:name="com.example.retrofit.view.fragments.DetailFragment"-->
+<!--        android:label="fragment_detail"-->
+<!--        tools:layout="@layout/fragment_detail" >-->
+<!--        <argument-->
+<!--            android:name="movie"-->
+<!--            app:argType="com.example.retrofit.model.api.Movie" />-->
+<!--    </fragment>-->
+
+</navigation>
