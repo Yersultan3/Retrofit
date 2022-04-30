@@ -36,7 +36,7 @@ class HomeFragment: Fragment() {
         initAndObserveViewModel()
         setAdapter()
         setBindings()
-//        getMovies()
+        getMovies()
 
         binding.recyclerView.adapter = MovieAdapter(itemClickListener = viewModel.recyclerViewItemClickListener)
     }
@@ -57,12 +57,12 @@ class HomeFragment: Fragment() {
 
     private fun initAndObserveViewModel() {
 //        viewModel = ViewModelProvider(this)[MovieListViewModel::class.java]
-        val viewModelProviderFactory = ViewModelProviderFactory(context!!)
+        val viewModelProviderFactory = ViewModelProviderFactory(requireContext())
         viewModel =
             ViewModelProvider(this, viewModelProviderFactory)[MovieListViewModel::class.java]
 
         viewModelObserver = MovieListViewModelObserver(
-            context = context!!,
+            context = requireContext(),
             viewModel = viewModel,
             viewLifecycleOwner = this,
             liveData = {
@@ -116,7 +116,7 @@ class HomeFragment: Fragment() {
 //        )
 //    }
 
-//    private fun getMovies() {
-//        viewModel.getMoviesCoroutine()
-//    }
+    private fun getMovies() {
+        viewModel.getMoviesCoroutine()
+    }
 }

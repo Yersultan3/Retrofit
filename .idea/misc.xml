@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/drawable-v24/container_bg.xml" value="0.2015625" />
+        <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/drawable/favorite_24.xml" value="0.1915" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.22962962962962963" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/drawable/ic_home.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/drawable/ic_menu.xml" value="0.22962962962962963" />
@@ -13,16 +14,18 @@
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/activity_movie_detail.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/activity_unauthorized.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_detail.xml" value="0.264" />
+        <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_favorites.xml" value="0.2109375" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_first.xml" value="0.21875" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_home.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_home1.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_movies.xml" value="0.2046875" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_registration.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/fragment_second.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/item_movie_img.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/movie_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/layout/user_list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/menu/back.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/yersu/AndroidStudioProjects/Retrofit/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
       </map>

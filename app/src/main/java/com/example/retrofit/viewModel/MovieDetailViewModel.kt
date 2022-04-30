@@ -1,39 +1,76 @@
-package com.example.retrofit.viewModel
+package com.example.movie.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.retrofit.model.api.Movie
+import androidx.lifecycle.viewModelScope
+import com.example.myfilms.data.models.PostMovie
 import com.example.retrofit.model.RetrofitService
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import com.example.retrofit.model.api.Movie
+import com.example.retrofit.model.database.MovieDao
+import com.example.retrofit.model.database.MovieDatabase
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class MovieDetailViewModel: ViewModel(), CoroutineScope {
-
-    private val job = Job()
+class MovieDetailViewModel(private val context: Context):ViewModel(), CoroutineScope {
+    private val movieDao: MovieDao = MovieDatabase.getDatabase(context).movieDao()
+    private val job: Job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
-    private val _liveData = MutableLiveData<Movie>()
-    val liveData: LiveData<Movie>
-        get() = _liveData
+    private val _movie = MutableLiveData<Movie>()
+    val movie: LiveData<Movie>
+        get() = _movie
 
-    fun getCoroutinesMovieById(id: Int) {
+    private val _addFavoriteState = MutableLiveData<Boolean>()
+    val addFavoriteState: LiveData<Boolean>
+        get() = _addFavoriteState
+    private val _compose = MutableLiveData<Boolean>()
+    val compose: LiveData<Boolean>
+        get() = _compose
+
+    fun getMovieById(movieId: Int) {
         launch {
-            val response = RetrofitService.getPostApi().getMovieByIdCoroutines(id,
-                apiKey = "02c64fae28c1003e5a0725abd7c2e518")
-            if (response.isSuccessful) {
-                _liveData.postValue(response.body())
+            val movieFL = withContext(Dispatchers.IO) {
+                val result=movieDao.getMovieById(movieId)
+                result
             }
+            _movie.value=movieFL
+
+        }
+
+    }
+    fun composeFavorite(session: String, id: Int) {
+        viewModelScope.launch {
+            val response = RetrofitService.getInstance().getFavoriteMovie(session_id = session, id=id)
+            if (response.isSuccessful) {
+                _compose.value = response.body()?.favorite == true
+            }
+
+
+        }
+
+    }
+    fun addFavorite(movieId: Int, sessionId: String) {
+        viewModelScope.launch {
+            val postMovie = PostMovie(media_id = movieId, favorite = true)
+            val response = RetrofitService.getPostApi().addFavorite(
+                session_id = sessionId,
+                postMovie = postMovie
+            )
+            _addFavoriteState.value = response.isSuccessful
         }
     }
-
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
+    fun deleteFavorites(movieId: Int, sessionId: String) {
+        viewModelScope.launch {
+            val postMovie = PostMovie(media_id = movieId, favorite = false)
+            val response = RetrofitService.getPostApi().addFavorite(
+                session_id = sessionId,
+                postMovie = postMovie
+            )
+            _addFavoriteState.value = response.isSuccessful
+        }
     }
 }

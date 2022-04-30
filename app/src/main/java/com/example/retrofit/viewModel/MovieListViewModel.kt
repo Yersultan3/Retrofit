@@ -33,7 +33,7 @@ class MovieListViewModel(
         get() = _openDetail
 
     init {
-        getMoviesCoroutine()
+//        getMoviesCoroutine()
         movieDao = MovieDatabase.getDatabase(context).movieDao()
     }
 
@@ -49,7 +49,7 @@ class MovieListViewModel(
                     if (response.isSuccessful) {
 //                        val result = response.body()
                         val movies = response.body()
-                        val results = movies?.results as List<Movie>
+                        val results = movies?.results
                         if (!results.isNullOrEmpty()) {
                             movieDao.insertAll(results)
                         }

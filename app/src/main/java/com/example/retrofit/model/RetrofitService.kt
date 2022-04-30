@@ -11,6 +11,24 @@ import java.util.concurrent.TimeUnit
 object RetrofitService {
 
     const val BASE_URL = "https://api.themoviedb.org/3/"
+    private var apiService: MovieApi? = null
+    private val LOCK = Any()
+    private var retrofit: Retrofit? = null
+
+    fun getInstance(): MovieApi {
+        apiService?.let { return it }
+        synchronized(LOCK) {
+            apiService?.let { return it }
+            val instance = Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .client(getOkHttp())
+                .build()
+            retrofit = instance
+            apiService = instance.create(MovieApi::class.java)
+            return apiService as MovieApi
+        }
+    }
 
     fun getPostApi(): MovieApi {
         val retrofit = Retrofit.Builder()

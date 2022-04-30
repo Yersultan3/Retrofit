@@ -36,7 +36,7 @@ class FirstFragment: Fragment() {
 
         private fun setupViewPager(viewpager: ViewPager) {
 //            var adapter: ViewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-            val adapter = ViewPagerAdapter(fragmentManager!!)
+            val adapter = ViewPagerAdapter(requireFragmentManager())
 
 
             adapter.addFragment(HomeFragment(), "Home")
