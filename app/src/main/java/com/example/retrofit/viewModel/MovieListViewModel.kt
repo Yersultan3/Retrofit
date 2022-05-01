@@ -33,7 +33,6 @@ class MovieListViewModel(
         get() = _openDetail
 
     init {
-//        getMoviesCoroutine()
         movieDao = MovieDatabase.getDatabase(context).movieDao()
     }
 
@@ -66,14 +65,6 @@ class MovieListViewModel(
             }
             _liveData.value = State.Result(list)
             _liveData.value = State.HideLoading
-
-//            val response = RetrofitService.getPostApi().getCoroutinesMovieList(apiKey = "02c64fae28c1003e5a0725abd7c2e518")
-//            if (response.isSuccessful) {
-//                val movies = response.body()
-//                val results = movies?.results as List<Movie>
-//                _liveData.value = State.Result(results)
-//                _liveData.value = State.HideLoading
-//            }
         }
     }
 

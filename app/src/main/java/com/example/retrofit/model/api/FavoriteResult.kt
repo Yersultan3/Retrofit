@@ -1,4 +1,4 @@
-package com.example.myfilms.data.models
+package com.example.retrofit.model.api
 
 data class FavoriteResult(
     val status_code: Int,

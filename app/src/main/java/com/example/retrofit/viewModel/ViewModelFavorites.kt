@@ -16,15 +16,11 @@ class ViewModelFavorites(application: Application) : AndroidViewModel(applicatio
 
     private val context = application
     private val apiService = RetrofitService.getInstance()
-//    private val repository = Repository(context)
 
     private val _movies = MutableLiveData<List<Movie>>()
     val movies: LiveData<List<Movie>>
         get() = _movies
 
-//    private val _loadingState = MutableLiveData<State>()
-//    val loadingState: LiveData<State>
-//        get() = _loadingState
 
     private val _openDetail = MutableLiveData<Event<Movie>>()
     val openDetail: LiveData<Event<Movie>>
@@ -62,10 +58,5 @@ class ViewModelFavorites(application: Application) : AndroidViewModel(applicatio
             apiService.deleteSession(sessionId = Session(session_id = session))
         }
     }
-//
-//    sealed class State {
-//        object ShowLoading: State()
-//        object HideLoading: State()
-//        data class Result(val list: List<Movie>?): State()
-//    }
+
 }

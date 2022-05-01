@@ -22,10 +22,7 @@ class ProfileFragment: Fragment()  {
 
 
     private lateinit var binding: FragmentProfileBinding
-
     private lateinit var profileViewModel: LoginViewModel
-//    private val args: ProfileFragmentArgs by navArgs()
-//    private var currentUser = MainActivity().args.user.userName
 
 
     override fun onCreateView(
@@ -38,34 +35,8 @@ class ProfileFragment: Fragment()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val application = requireNotNull(this.activity).application
-
-//        val dao = UserDatabase.getInstance(application).registerDatabaseDao
-
-//        val repository = RegisterRepo(dao)
-
-//        val factory = ProfileViewModelFactory(repository, application)
-
-//        profileViewModel =
-//            ViewModelProvider(this, factory)[ProfileViewModel::class.java]
-//
-//        binding.profileLayout = profileViewModel
 
         binding.lifecycleOwner = this
-
-        val bundle = arguments
-        val message = bundle?.getString("params")
-        Log.d("CurrentUser2", message.toString())
-
-
-//        profileViewModel.navigateto.observe(this, Observer { hasFinished ->
-//            if (hasFinished == true) {
-//                val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToLoginFragment()
-//                NavHostFragment.findNavController(this).navigate(action)
-//                profileViewModel.doneNavigating()
-//            }
-//        })
-
         initRecyclerView()
         initViewModel()
         showDialog()
@@ -109,8 +80,7 @@ class ProfileFragment: Fragment()  {
     }
 
     private fun initRecyclerView() {
-//        binding.usersRecyclerView.layoutManager = LinearLayoutManager(this.context)
-//        displayUsersList()
+
     }
 
 

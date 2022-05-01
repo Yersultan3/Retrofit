@@ -12,7 +12,6 @@ import com.example.retrofit.databinding.MovieItemBinding
 import com.squareup.picasso.Picasso
 
 class MovieAdapter(
-//    private val list: List<Movie>,
     val itemClickListener: RecyclerViewItemClick? = null
 ):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -60,17 +59,8 @@ class MovieAdapter(
             }
         }
 
-//        val binding: MovieItemBinding =
-//            DataBindingUtil.inflate(
-//                inflater,
-//                R.layout.movie_item,
-//                parent,
-//                false
-//            )
-//        return MovieViewHolder(binding)
     }
 
-//    override fun getItemCount(): Int = list.size
     override fun getItemCount(): Int = differ.currentList.size
 
     fun submitList(list: List<Any>?) {
@@ -79,11 +69,9 @@ class MovieAdapter(
 
     companion object {
         const val VIEW_TYPE_POST = 0
-        const val VIEW_TYPE_POST2 = 2
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        val viewHolder = holder as MovieViewHolder
 
         when (holder.itemViewType) {
             VIEW_TYPE_POST -> {
@@ -94,14 +82,11 @@ class MovieAdapter(
             }
         }
 
-//        viewHolder.initContent(list[position])
-//        Picasso.get().load("https://image.tmdb.org/t/p/w500" + list[position].poster_path).into(viewHolder.binding.moviePoster)
     }
 
     inner class MovieViewHolder(val binding: MovieItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-//        fun initContent(data: Movie?)
         fun initContent(data: Movie?) {
             binding.data = data
             binding.executePendingBindings()
@@ -111,11 +96,6 @@ class MovieAdapter(
             }
         }
     }
-//
-//    fun clearAll() {
-//        (list as? ArrayList<Movie>)?.clear()
-//        notifyDataSetChanged()
-//    }
 
     override fun getItemViewType(position: Int): Int =
         when (differ.currentList[position]) {

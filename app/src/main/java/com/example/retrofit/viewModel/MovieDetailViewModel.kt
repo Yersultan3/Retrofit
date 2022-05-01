@@ -1,11 +1,11 @@
-package com.example.movie.viewmodel
+package com.example.retrofit.viewModel
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myfilms.data.models.PostMovie
+import com.example.retrofit.model.api.PostMovie
 import com.example.retrofit.model.RetrofitService
 import com.example.retrofit.model.api.Movie
 import com.example.retrofit.model.database.MovieDao
@@ -38,21 +38,19 @@ class MovieDetailViewModel(private val context: Context):ViewModel(), CoroutineS
                 result
             }
             _movie.value=movieFL
-
         }
-
     }
+
     fun composeFavorite(session: String, id: Int) {
         viewModelScope.launch {
             val response = RetrofitService.getInstance().getFavoriteMovie(session_id = session, id=id)
             if (response.isSuccessful) {
                 _compose.value = response.body()?.favorite == true
             }
-
-
         }
 
     }
+
     fun addFavorite(movieId: Int, sessionId: String) {
         viewModelScope.launch {
             val postMovie = PostMovie(media_id = movieId, favorite = true)
@@ -63,6 +61,7 @@ class MovieDetailViewModel(private val context: Context):ViewModel(), CoroutineS
             _addFavoriteState.value = response.isSuccessful
         }
     }
+
     fun deleteFavorites(movieId: Int, sessionId: String) {
         viewModelScope.launch {
             val postMovie = PostMovie(media_id = movieId, favorite = false)

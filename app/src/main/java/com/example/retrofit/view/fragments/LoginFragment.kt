@@ -26,9 +26,7 @@ class LoginFragment: Fragment(), CoroutineScope {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var loginViewModel: LoginViewModel
-//    private lateinit var userName: String
     private lateinit var userEmail: String
-//    private lateinit var userSurname: String
     private lateinit var userPswd: String
     private lateinit var prefSettings: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
@@ -50,12 +48,10 @@ class LoginFragment: Fragment(), CoroutineScope {
         val sharedPreferences = context?.getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
         val token = sharedPreferences?.getString("TOKEN", null)
         if (token != null) {
-            // intent to login page
             Log.d("Token", " Token Null")
             findNavController().navigate(
                 LoginFragmentDirections.actionLoginFragmentToMainActivity()
             )
-//            navController.navigate(MainActivityDirections.actionMainActivityToLoginFragment())
         }
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -65,16 +61,6 @@ class LoginFragment: Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         onLoginClick()
-//        binding.btnToReg.setOnClickListener {
-//            if(binding.emailTv.text.isNullOrBlank() && binding.passwordTv.text.isNullOrBlank()) {
-//
-//                findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
-//            }
-//            else {
-//                Toast.makeText(context, "Email or Password is empty", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-
     }
 
 
@@ -124,7 +110,6 @@ class LoginFragment: Fragment(), CoroutineScope {
                 findNavController().navigate(
                     LoginFragmentDirections.actionLoginFragmentToMainActivity()
                 )
-//                findNavController().navigate(R.id.action_loginFragment_to_navigation_movies)
             } catch (e: Exception) {
             }
         }

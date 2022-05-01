@@ -23,12 +23,6 @@ class RegisterViewModel(private val repository: RegisterRepo, application: Appli
 
    var userDetailsLiveData = MutableLiveData<Array<User>>()
 
-//   @Bindable
-//   val inputFirstName = MutableLiveData<String>()
-
-//   @Bindable
-//   val inputLastName = MutableLiveData<String>()
-
    @Bindable
    val inputUsername = MutableLiveData<String>()
 

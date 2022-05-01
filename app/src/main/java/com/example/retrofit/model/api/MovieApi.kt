@@ -1,7 +1,5 @@
 package com.example.retrofit.model.api
 
-import com.example.myfilms.data.models.FavoriteResult
-import com.example.myfilms.data.models.PostMovie
 import com.example.myfilms.data.models.Token
 import com.example.retrofit.model.CreateToken
 import com.example.retrofit.model.ValidateWithLogin
@@ -43,25 +41,25 @@ interface MovieApi {
         @Body token: Token
     ): Response<Session>
 
-    @GET("movie/top_rated")
-    fun getMovieList(@Query("api_key")apiKey:String): Call<Movies>
+    @GET("movie/popular")
+    fun getMovieList(@Query("api_key")apiKey: String): Call<Movies>
 
-    @GET("movie/top_rated")
-   suspend fun getCoroutinesMovieList(@Query("api_key")apiKey:String): Response<Movies>
+    @GET("movie/popular")
+   suspend fun getCoroutinesMovieList(@Query("api_key")apiKey: String): Response<Movies>
 
     @GET("movie/{movie_id}")
     fun getMovieByIdCoroutines(@Path("/movie/{movie_id}") id: Int,
-                    @Query("api_key") apiKey:String): Response<Movie>
+                    @Query("api_key") apiKey: String): Response<Movie>
 
     @GET("authentication/token/new")
     fun createToken(
-        @Query("api_key") apiKey:String
+        @Query("api_key") apiKey: String
     ): Response<CreateToken>
 
     @POST("/authentication/token/validate_with_login")
     fun validateWithLogin(
-        @Query("api_key") apiKey:String,
-        @Body body : RequestBody
+        @Query("api_key") apiKey: String,
+        @Body body: RequestBody
     ): Response<ValidateWithLogin>
 
     @GET("account/{account_id}/favorite/movies")

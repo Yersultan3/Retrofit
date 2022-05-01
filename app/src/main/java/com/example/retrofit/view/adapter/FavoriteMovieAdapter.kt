@@ -39,7 +39,6 @@ class FavoriteMovieAdapter(
 
     private val differ = AsyncListDiffer(this, diffCallback)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 

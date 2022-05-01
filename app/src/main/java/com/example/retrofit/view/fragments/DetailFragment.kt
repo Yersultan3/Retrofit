@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.movie.viewmodel.MovieDetailViewModel
+import com.example.retrofit.viewModel.MovieDetailViewModel
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentDetailBinding
 import com.squareup.picasso.Picasso
@@ -18,7 +18,6 @@ class DetailFragment: Fragment() {
     private lateinit var viewModel: MovieDetailViewModel
     private lateinit var prefSettings: SharedPreferences
 
-//    private lateinit var viewModel: MovieDetailViewModel
 
     companion object {
         private const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
@@ -34,7 +33,6 @@ class DetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -95,6 +93,7 @@ class DetailFragment: Fragment() {
         try {
             sessionId = prefSettings.getString(LoginFragment.SESSION_ID_KEY, null) as String
         } catch (e: Exception) {
+
         }
     }
 
