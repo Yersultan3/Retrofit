@@ -1,13 +1,16 @@
 package com.example.retrofit.view.fragments
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.retrofit.viewModel.MovieDetailViewModel
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentDetailBinding
+import com.example.retrofit.viewModel.ViewModelProviderFactory
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
@@ -39,45 +42,62 @@ class DetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        movieId = args.movieId
+        getSessionId()
+        getMovie(movieId)
+        onFavoriteClickListener()
         binding.progressBar.visibility = View.GONE
 
-//        initAndObserveViewModel()
-
-//        viewModel.getCoroutinesMovieById()
-        binding.tvTitle.text = args.movie.title
-        Picasso.get().load("https://image.tmdb.org/t/p/w500" + args.movie.poster_path).into(binding.detailMoviePoster)
-
     }
+
+    private fun getMovie(movieId: Int) {
+        binding.swipeRefresh.isRefreshing=true
+        val viewModelProviderFactory = ViewModelProviderFactory(requireActivity())
+        viewModel = ViewModelProvider(this, viewModelProviderFactory)[MovieDetailViewModel::class.java]
+        viewModel.getMovieById(movieId)
+        viewModel.movie.observe(viewLifecycleOwner) {
+            Picasso.get().load(IMAGE_URL + it.poster_path).into(binding.detailMoviePoster)
+            imgActive()
+            binding.tvTitle.text = it.title
+            binding.swipeRefresh.isRefreshing = false
+        }
+    }
+
 
     private fun imgActive() {
         viewModel.composeFavorite(sessionId, movieId)
         viewModel.compose.observe(viewLifecycleOwner) {
             if(it) {
-                binding.detailStarBtn.setImageResource(R.drawable.favorite_on)
+                binding.detailStarBtn.setImageResource(R.drawable.favorite_on_ic)
+                binding.swipeRefresh.isRefreshing = false
             } else {
-                binding.detailStarBtn.setImageResource(R.drawable.favorite_off)
+                binding.detailStarBtn.setImageResource(R.drawable.favorite_off_ic)
+                binding.swipeRefresh.isRefreshing = false
             }
         }
     }
+
     private fun addFavorite(movieId: Int, sessionId: String) {
-        viewModel.addFavorite(movieId, sessionId)
         viewModel.addFavoriteState.observe(viewLifecycleOwner) {
             if (it){
-                binding.detailStarBtn.setImageResource(R.drawable.favorite_on)
+                binding.detailStarBtn.setImageResource(R.drawable.favorite_on_ic)
                 binding.detailStarBtn.tag = TAG_YELLOW
             }
 
         }
+        viewModel.addFavorite(movieId, sessionId)
     }
+
     private fun deleteFavorite(movieId: Int, sessionId: String) {
-        viewModel.deleteFavorites(movieId, sessionId)
         viewModel.addFavoriteState.observe(viewLifecycleOwner) {
             if (it){
-                binding.detailStarBtn.setImageResource(R.drawable.favorite_off)
+                binding.detailStarBtn.setImageResource(R.drawable.favorite_off_ic)
                 binding.detailStarBtn.tag = TAG_WHITE
             }
         }
+        viewModel.deleteFavorites(movieId, sessionId)
     }
+
     private fun onFavoriteClickListener() {
 
         binding.detailStarBtn.setOnClickListener {
@@ -89,7 +109,11 @@ class DetailFragment: Fragment() {
             }
         }
     }
+
     private fun getSessionId() {
+        prefSettings = context?.getSharedPreferences(
+            LoginFragment.APP_SETTINGS, Context.MODE_PRIVATE
+        ) as SharedPreferences
         try {
             sessionId = prefSettings.getString(LoginFragment.SESSION_ID_KEY, null) as String
         } catch (e: Exception) {
@@ -97,17 +121,4 @@ class DetailFragment: Fragment() {
         }
     }
 
-
-
-//    private fun initAndObserveViewModel() {
-//        viewModel = ViewModelProvider(this)[MovieDetailViewModel::class.java]
-//
-//        viewModel.liveData.observe(
-//            this,
-//            {
-//                Picasso.get().load("https://image.tmdb.org/t/p/w500" + it.poster_path).into(binding.detailMoviePoster)
-//                binding.tvTitle.text = it.title
-//            }
-//        )
-//    }
 }
