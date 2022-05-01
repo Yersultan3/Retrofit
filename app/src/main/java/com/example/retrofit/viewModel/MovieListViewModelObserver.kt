@@ -1,9 +1,8 @@
-package com.example.retrofitexample.viewmodel
+package com.example.retrofit.viewModel
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.example.retrofit.model.api.Movie
-import com.example.retrofit.viewModel.MovieListViewModel
 
 class MovieListViewModelObserver(
     private val context: Context,
@@ -31,8 +30,8 @@ class MovieListViewModelObserver(
             viewModel.openDetail.observe(
                 viewLifecycleOwner
             ) {
-                it.getContentIfNotHandled()?.let {
-                    this.invoke(it)
+                it.getContentIfNotHandled()?.let { movie ->
+                    this.invoke(movie)
                 }
             }
         }
