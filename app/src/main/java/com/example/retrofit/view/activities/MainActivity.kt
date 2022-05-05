@@ -1,14 +1,20 @@
 package com.example.retrofit.view.activities
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.retrofit.R
 import com.example.retrofit.databinding.ActivityMainBinding
+import com.example.retrofit.view.fragments.LoginFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
@@ -25,16 +31,21 @@ class MainActivity : AppCompatActivity() {
         initBottomNav()
 
 
-        val sharedPreferences = getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("TOKEN", null)
-        if (token == null) {
-            Log.d("Token", " Token Null")
-        }
+
+//        val sharedPreferences = getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
+//        val token = sharedPreferences.getString("TOKEN", null)
+//        if (token == null) {
+//            Log.d("Token", " Token Null")
+//        }
     }
 
     private fun initBottomNav() {
         binding.bottomNavigation.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         binding.bottomNavigation.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 

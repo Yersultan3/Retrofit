@@ -34,8 +34,6 @@ class HomeFragment: Fragment() {
 
         private fun setupViewPager(viewpager: ViewPager) {
             val adapter = ViewPagerAdapter(childFragmentManager)
-
-
             adapter.addFragment(PopularMoviesFragment(), "Popular")
             adapter.addFragment(TopRatedFragment(), "Top rated")
             viewpager.adapter = adapter

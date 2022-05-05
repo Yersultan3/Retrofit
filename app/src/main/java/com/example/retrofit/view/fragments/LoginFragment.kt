@@ -2,6 +2,7 @@ package com.example.retrofit.view.fragments
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.retrofit.databinding.FragmentLoginBinding
 import com.example.retrofit.model.api.LoginApprove
+import com.example.retrofit.view.activities.UnauthorizedActivity
 import com.example.retrofit.viewModel.LoginViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,8 +28,6 @@ class LoginFragment: Fragment(), CoroutineScope {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var userEmail: String
-    private lateinit var userPswd: String
     private lateinit var prefSettings: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
     private val job: Job = Job()
@@ -111,15 +111,15 @@ class LoginFragment: Fragment(), CoroutineScope {
                     LoginFragmentDirections.actionLoginFragmentToMainActivity()
                 )
             } catch (e: Exception) {
-            }
+
+              }
         }
     }
+
     private fun putDataIntoPref(string: String) {
         editor.putString(SESSION_ID_KEY, string)
         editor.commit()
         binding.userNameTextField.text = null
         binding.passwordTextField.text = null
     }
-
-
 }

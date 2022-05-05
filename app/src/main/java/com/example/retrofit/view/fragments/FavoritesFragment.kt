@@ -46,6 +46,7 @@ class FavoritesFragment : Fragment() {
         getSessionId()
         initAndObserveViewModel()
         setAdapter()
+        setBindings()
         onBackPressed()
     }
 
@@ -55,6 +56,12 @@ class FavoritesFragment : Fragment() {
             RecyclerView.VERTICAL,
             false
         )
+    }
+
+    private fun setBindings() {
+        binding.swipeRefresh.setOnRefreshListener {
+            favoritesViewModel.getFavorites(sessionId, PAGE)
+        }
     }
 
     private fun getSessionId() {
@@ -81,11 +88,10 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel.openDetail.observe(
             viewLifecycleOwner
         ) {
-//            it.getContentIfNotHandled()?.let { movie ->
-//                val action = FavoriteFragmentDirections.actionFavoriteFragmentToDetailFragment22(movie.id)
-//                findNavController().navigate(action)
-//            }
-
+            it.getContentIfNotHandled()?.let { movie ->
+                val action = FavoritesFragmentDirections.actionFavoriteFragmentToFavDetailFragment(movie.id)
+                findNavController().navigate(action)
+            }
         }
     }
 
@@ -103,6 +109,4 @@ class FavoritesFragment : Fragment() {
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
-
-
 }

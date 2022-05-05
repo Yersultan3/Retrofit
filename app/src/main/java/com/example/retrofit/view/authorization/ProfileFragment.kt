@@ -2,9 +2,7 @@ package com.example.retrofit.view.authorization
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.retrofit.databinding.FragmentProfileBinding
-import com.example.retrofit.model.api.LoginApprove
-import com.example.retrofit.view.fragments.LoginFragmentDirections
 import com.example.retrofit.viewModel.LoginViewModel
 
 
@@ -40,6 +36,8 @@ class ProfileFragment: Fragment()  {
         initRecyclerView()
         initViewModel()
         showDialog()
+
+
     }
 
     private fun initViewModel() {
@@ -51,30 +49,30 @@ class ProfileFragment: Fragment()  {
     }
 
     private fun showDialog() {
-        binding.btnLogout.setOnClickListener{
+        binding.btnLogout.setOnClickListener {
             val dialog = AlertDialog.Builder(context)
-            dialog.setTitle("Delete Wallpaper")
+            dialog.setTitle("Log out")
             dialog.setMessage("Do you really want to logout?")
-            dialog.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+            dialog.setPositiveButton("Yes") { dialog, which ->
 
-
-
-                val sharedPreferences = requireContext().getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
+                val sharedPreferences =
+                    requireContext().getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
                 sharedPreferences.edit().remove("TOKEN").apply()
                 val token = sharedPreferences.getString("TOKEN", null)
 
-                if(token == null) {
-                    Toast.makeText(context,
-                        "token null", Toast.LENGTH_SHORT).show()
+                if (token == null) {
+                    Toast.makeText(
+                        context,
+                        "token null", Toast.LENGTH_SHORT
+                    ).show()
                     dialog.dismiss()
-                    findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToLoginFragment())
+                    findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToUnauthorizedActivity())
                 }
+            }
 
-            })
-            dialog.setNegativeButton("No", DialogInterface.OnClickListener {
-                    dialog, which ->
+            dialog.setNegativeButton("No") { dialog, which ->
                 dialog.dismiss()
-            })
+            }
             dialog.show()
         }
     }
