@@ -12,7 +12,7 @@
     <item
         android:id="@+id/navigation_second_fragment"
         android:enabled="true"
-        android:icon="@drawable/ic_menu"
+        android:icon="@drawable/favorite_off_ic"
         android:title="@string/favorites"
         app:showAsAction="always" />
 

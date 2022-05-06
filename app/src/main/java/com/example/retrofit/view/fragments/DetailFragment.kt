@@ -88,6 +88,7 @@ class DetailFragment: Fragment() {
             imageActive()
             binding.tvTitle.text = it.title
             binding.tvOverview.text = it.overview
+            binding.releaseDate.text = it.release_date
 //            binding.swipeRefresh.isRefreshing = false
         }
     }
