@@ -60,20 +60,18 @@ class DetailFragment: Fragment() {
 //        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 //        (activity as AppCompatActivity).supportActionBar!!.setHomeButtonEnabled(true)
 
-        val decorView: View = activity.window.decorView
-        val option: Int = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
-        decorView.systemUiVisibility = option
-        activity.window.statusBarColor = Color.TRANSPARENT
+//        val decorView: View = activity.window.decorView
+//        val option: Int = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+//        decorView.systemUiVisibility = option
+//        activity.window.statusBarColor = Color.TRANSPARENT
 
         activity.setSupportActionBar(binding.toolbar)
-//        activity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        activity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         activity.supportActionBar!!.setHomeButtonEnabled(true)
 
 //        binding.toolbarLayout.title = "TabViewPagerScroll"
 //        binding.viewPager.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
 //        binding.tabLayout.setupWithViewPager(binding.viewPager)
-
-
     }
 
 

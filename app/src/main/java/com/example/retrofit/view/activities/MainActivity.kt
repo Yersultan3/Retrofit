@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
 //        val sharedPreferences = getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
 //        val token = sharedPreferences.getString("TOKEN", null)
 //        if (token == null) {

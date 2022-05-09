@@ -6,49 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".view.fragments.HomeFragment">
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0F9D58"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/constraintLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/toolbar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="?attr/actionBarSize"-->
-<!--                app:layout_collapseMode="pin"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:popupTheme="@style/AppTheme.PopupOverlay" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabTablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabIndicatorColor="#FFF"
-            app:tabIndicatorHeight="3dp"
-            app:tabMode="fixed"/>
-    </com.google.android.material.appbar.AppBarLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include"
+        app:tabIndicatorColor="#FFF"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed" />
 
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/tab_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabTabLayout" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

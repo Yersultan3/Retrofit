@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.example.retrofit.databinding.FragmentHomeBinding
@@ -26,10 +27,16 @@ class HomeFragment: Fragment() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            val activity = (activity as AppCompatActivity)
+            activity.setSupportActionBar(binding.include.toolbar)
+//            activity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+            activity.supportActionBar!!.setHomeButtonEnabled(true)
+
             val tabViewpager = binding.tabViewpager
-            val tabTablayout = binding.tabTablayout
+            val tabTabLayout = binding.tabTabLayout
             setupViewPager(tabViewpager)
-            tabTablayout.setupWithViewPager(tabViewpager)
+            tabTabLayout.setupWithViewPager(tabViewpager)
         }
 
         private fun setupViewPager(viewpager: ViewPager) {
