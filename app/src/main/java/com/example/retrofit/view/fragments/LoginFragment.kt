@@ -102,7 +102,6 @@ class LoginFragment: Fragment(), CoroutineScope {
             )[LoginViewModel::class.java]
     }
     private fun observeLoadingState() {
-
         loginViewModel.sessionId.observe(viewLifecycleOwner) {
             sessionId = it
             putDataIntoPref(sessionId)

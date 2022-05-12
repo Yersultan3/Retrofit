@@ -69,9 +69,6 @@ class DetailFragment: Fragment() {
         activity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         activity.supportActionBar!!.setHomeButtonEnabled(true)
 
-//        binding.toolbarLayout.title = "TabViewPagerScroll"
-//        binding.viewPager.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
-//        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
 
@@ -108,11 +105,10 @@ class DetailFragment: Fragment() {
     private fun addFavorite(movieId: Int, sessionId: String) {
         viewModel.addFavorite(movieId, sessionId)
         viewModel.addFavoriteState.observe(viewLifecycleOwner) {
-            if (it){
+            if (it) {
                 binding.detailStarBtn.setImageResource(R.drawable.favorite_on_ic)
                 binding.detailStarBtn.tag = TAG_PRESSED
             }
-
         }
         viewModel.addFavorite(movieId, sessionId)
     }
@@ -129,9 +125,7 @@ class DetailFragment: Fragment() {
     }
 
     private fun onFavoriteClickListener() {
-
         binding.detailStarBtn.setOnClickListener {
-
             if (binding.detailStarBtn.tag == TAG_PRESSED) {
                 deleteFavorite(movieId, sessionId)
             } else {

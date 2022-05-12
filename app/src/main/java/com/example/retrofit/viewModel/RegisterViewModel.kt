@@ -49,7 +49,7 @@ class RegisterViewModel(private val repository: RegisterRepo, application: Appli
       get() = _errorToastUsername
 
 
-   fun sumbitButton() {
+   fun submitButton() {
       Log.i("MYTAG", "Inside SUBMIT BUTTON")
       if (
 //         inputFirstName.value == null || inputLastName.value == null ||

@@ -72,6 +72,9 @@ dependencies {
     //coil
     implementation("io.coil-kt:coil:0.9.5")
 
+    //user permission
+    implementation 'com.karumi:dexter:6.2.2'
+
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'

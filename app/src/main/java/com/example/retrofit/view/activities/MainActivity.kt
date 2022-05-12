@@ -1,16 +1,12 @@
 package com.example.retrofit.view.activities
 
-import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.retrofit.R
 import com.example.retrofit.databinding.ActivityMainBinding
-import com.example.retrofit.view.fragments.LoginFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
@@ -26,9 +22,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         navController = findNavController(R.id.nav_host_fragment)
         initBottomNav()
-
-
-
 
 //        val sharedPreferences = getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
 //        val token = sharedPreferences.getString("TOKEN", null)
@@ -51,6 +44,4 @@ class MainActivity : AppCompatActivity() {
 //        manager.popBackStack()
 //        super.onBackPressed()
 //    }
-
-
 }

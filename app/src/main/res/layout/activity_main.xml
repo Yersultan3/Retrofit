@@ -8,9 +8,6 @@
     android:background="@color/white"
     tools:context=".view.activities.MainActivity" >
 
-
-
-
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -33,4 +30,5 @@
         app:itemTextColor="@drawable/selector_bottom_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

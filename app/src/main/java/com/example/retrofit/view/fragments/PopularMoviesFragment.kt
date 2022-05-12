@@ -37,8 +37,6 @@ class PopularMoviesFragment: Fragment() {
         setBindings()
         getMovies()
 
-
-
         binding.recyclerView.adapter = MovieAdapter(itemClickListener = viewModel.recyclerViewItemClickListener)
     }
 

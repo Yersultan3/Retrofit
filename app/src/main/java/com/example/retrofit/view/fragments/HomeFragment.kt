@@ -30,7 +30,6 @@ class HomeFragment: Fragment() {
 
             val activity = (activity as AppCompatActivity)
             activity.setSupportActionBar(binding.include.toolbar)
-//            activity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
             activity.supportActionBar!!.setHomeButtonEnabled(true)
 
             val tabViewpager = binding.tabViewpager
