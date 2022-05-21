@@ -14,7 +14,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.retrofit.viewModel.MovieDetailViewModel
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentDetailBinding
-import com.example.retrofit.viewModel.ViewModelProviderFactory
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import java.lang.Exception
@@ -75,8 +74,11 @@ class DetailFragment: Fragment() {
 
     private fun getMovie(movieId: Int) {
 
-        val viewModelProviderFactory = ViewModelProviderFactory(requireActivity())
-        viewModel = ViewModelProvider(this, viewModelProviderFactory)[MovieDetailViewModel::class.java]
+//        val viewModelProviderFactory = ViewModelProviderFactory(requireActivity().application)
+        viewModel = ViewModelProvider(this,
+//            viewModelProviderFactory
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        )[MovieDetailViewModel::class.java]
         viewModel.getMovieById(movieId)
         viewModel.movie.observe(viewLifecycleOwner) {
             Picasso.get().load(IMAGE_URL + it.poster_path).into(binding.detailMoviePoster)

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.databinding.FragmentPopularMoviesBinding
 import com.example.retrofit.view.adapter.MovieAdapter
 import com.example.retrofit.viewModel.MovieListViewModel
-import com.example.retrofit.viewModel.ViewModelProviderFactory
 import com.example.retrofit.viewModel.MovieListViewModelObserver
 
 class PopularMoviesFragment: Fragment() {
@@ -55,9 +54,13 @@ class PopularMoviesFragment: Fragment() {
     }
 
     private fun initAndObserveViewModel() {
-        val viewModelProviderFactory = ViewModelProviderFactory(requireContext())
+//        val viewModelProviderFactory = ViewModelProviderFactory(requireActivity().application)
+
         viewModel =
-            ViewModelProvider(this, viewModelProviderFactory)[MovieListViewModel::class.java]
+            ViewModelProvider(this,
+//                viewModelProviderFactory
+           ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+            )[MovieListViewModel::class.java]
 
         viewModelObserver = MovieListViewModelObserver(
             context = requireContext(),

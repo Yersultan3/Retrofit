@@ -1,10 +1,8 @@
 package com.example.retrofit.viewModel
 
+import android.app.Application
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.retrofit.model.api.PostMovie
 import com.example.retrofit.model.RetrofitService
 import com.example.retrofit.model.api.Movie
@@ -13,8 +11,8 @@ import com.example.retrofit.model.database.MovieDatabase
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class MovieDetailViewModel(private val context: Context):ViewModel(), CoroutineScope {
-    private val movieDao: MovieDao = MovieDatabase.getDatabase(context).movieDao()
+class MovieDetailViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
+    private val movieDao: MovieDao = MovieDatabase.getDatabase(application).movieDao()
     private val job: Job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -32,7 +30,7 @@ class MovieDetailViewModel(private val context: Context):ViewModel(), CoroutineS
         get() = _compose
 
     fun getMovieById(movieId: Int) {
-        launch {
+        viewModelScope.launch {
             val movieFL = withContext(Dispatchers.IO) {
                 val result=movieDao.getMovieById(movieId)
                 result
@@ -48,7 +46,6 @@ class MovieDetailViewModel(private val context: Context):ViewModel(), CoroutineS
                 _compose.value = response.body()?.favorite == true
             }
         }
-
     }
 
     fun addFavorite(movieId: Int, sessionId: String) {
